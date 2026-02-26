@@ -5,6 +5,69 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  demo: string;
+  demoButtonText?: string;
+  image: string;
+};
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <Card className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 hover:border-primary/50 group">
+      <CardHeader>
+        <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 p-8 overflow-hidden">
+          {project.image.startsWith('/') || project.image.startsWith('http') ? (
+            <img
+              src={project.image}
+              alt={`${project.title} logo`}
+              className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+            />
+          ) : (
+            <span className="text-9xl transition-transform duration-300 group-hover:scale-110">
+              {project.image}
+            </span>
+          )}
+        </div>
+        <CardTitle className="text-xl">{project.title}</CardTitle>
+        <CardDescription>{project.description}</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-grow">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter className="flex gap-2">
+        <Button variant="outline" size="sm" asChild className="flex-1 active:scale-95 transition-all hover:bg-primary/10 hover:text-primary hover:border-primary/50 group cursor-pointer">
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+            <Github className="h-4 w-4 mr-2 transition-all group-hover:rotate-12 group-hover:text-primary" />
+            View Code
+          </a>
+        </Button>
+        {project.demo && (
+          <Button size="sm" asChild className="flex-1 active:scale-95 transition-all group cursor-pointer">
+            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              <ExternalLink className="h-4 w-4 mr-2 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary-foreground" />
+              {project.demoButtonText || "Demo"}
+            </a>
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
+  );
+}
+
 const projects = [
   {
     id: 1,
@@ -21,7 +84,7 @@ const projects = [
     description: "Collection of Cypress test examples and experiments demonstrating various testing patterns and integrations with SauceLabs.",
     tech: ["Cypress", "JavaScript"],
     github: "https://github.com/mikeandersonwwt/cypress-saucelabs",
-    demo: "",
+    demo: "https://mikeandersonwwt.github.io/cypress-saucelabs/",
     image: "https://raw.githubusercontent.com/mikeandersonwwt/portfolio/main/public/cypress-logo.png",
   },
   {
@@ -79,105 +142,13 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
           {projects.slice(0, 2).map((project) => (
-            <Card key={project.id} className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 hover:border-primary/50 group">
-              <CardHeader>
-                <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 p-8 overflow-hidden">
-                  {project.image.startsWith('/') || project.image.startsWith('http') ? (
-                    <img
-                      src={project.image}
-                      alt={`${project.title} logo`}
-                      className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-                    />
-                  ) : (
-                    <span className="text-9xl transition-transform duration-300 group-hover:scale-110">
-                      {project.image}
-                    </span>
-                  )}
-                </div>
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex gap-2">
-                <Button variant="outline" size="sm" asChild className="flex-1 active:scale-95 transition-all hover:bg-primary/10 hover:text-primary hover:border-primary/50 group cursor-pointer">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <Github className="h-4 w-4 mr-2 transition-all group-hover:rotate-12 group-hover:text-primary" />
-                    View Code
-                  </a>
-                </Button>
-                {project.demo && (
-                  <Button size="sm" asChild className="flex-1 active:scale-95 transition-all group cursor-pointer">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                      <ExternalLink className="h-4 w-4 mr-2 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary-foreground" />
-                      {project.demoButtonText || "Demo"}
-                    </a>
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.slice(2).map((project) => (
-            <Card key={project.id} className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 hover:border-primary/50 group">
-              <CardHeader>
-                <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 p-8 overflow-hidden">
-                  {project.image.startsWith('/') || project.image.startsWith('http') ? (
-                    <img
-                      src={project.image}
-                      alt={`${project.title} logo`}
-                      className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-                    />
-                  ) : (
-                    <span className="text-9xl transition-transform duration-300 group-hover:scale-110">
-                      {project.image}
-                    </span>
-                  )}
-                </div>
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex gap-2">
-                <Button variant="outline" size="sm" asChild className="flex-1 active:scale-95 transition-all hover:bg-primary/10 hover:text-primary hover:border-primary/50 group cursor-pointer">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                    <Github className="h-4 w-4 mr-2 transition-all group-hover:rotate-12 group-hover:text-primary" />
-                    View Code
-                  </a>
-                </Button>
-                {project.demo && (
-                  <Button size="sm" asChild className="flex-1 active:scale-95 transition-all group cursor-pointer">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                      <ExternalLink className="h-4 w-4 mr-2 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary-foreground" />
-                      {project.demoButtonText || "Demo"}
-                    </a>
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>

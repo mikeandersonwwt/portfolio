@@ -52,7 +52,7 @@ export default function Contact() {
       setTimeout(() => {
         setIsSubmitted(false);
         setSubmittedData(null);
-      }, 10000);
+      }, 15000);
     }
   };
 
@@ -96,7 +96,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium">mike.anderson@wwt.com</p>
+                    <a href="mailto:mike.anderson@wwt.com" className="font-medium hover:text-primary transition-colors">mike.anderson@wwt.com</a>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 group cursor-pointer">
@@ -104,7 +104,7 @@ export default function Contact() {
                     <FileText className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">About Me</p>
+                    <p className="text-sm text-muted-foreground">Resume</p>
                     <a href="https://mikeanderson12.github.io/Resume/index.html" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-primary transition-colors cursor-pointer">
                       View Resume
                     </a>
@@ -139,7 +139,7 @@ export default function Contact() {
           <Card className="transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30">
             <CardHeader>
               <CardTitle>Send a Message</CardTitle>
-              <CardDescription>Fill out the form below and I'll get back to you soon</CardDescription>
+              <CardDescription>Fill out the form to send me a message</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -194,7 +194,7 @@ export default function Contact() {
                 {isSubmitted && (
                   <div className="space-y-3">
                     <div className="p-4 bg-primary/10 text-primary rounded-lg text-center">
-                      Thank you! Your message has only been sent to the console for you to see 😀 
+                      This is only a demo and the form is not hooked up to any backend. The message has been sent to the console for you to see 😀 
                     </div>
                     {submittedData && (
                       <div className="p-4 bg-muted rounded-lg">
