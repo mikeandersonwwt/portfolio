@@ -100,7 +100,7 @@ const projects = [
   {
     id: 4,
     title: "Yahtzee Game",
-    description: "A web-based implementation of the classic Yahtzee dice game, built with React, TypeScript, and Vite. This project showcases full-stack development skills, AI opponent implementation, and automated CI/CD deployment using GitHub Actions.",
+    description: "A web-based implementation of the classic Yahtzee dice game, built with React, TypeScript, and Vite. This project showcases frontend development skills, React hooks-based game logic, and automated CI/CD deployment using GitHub Actions.",
     tech: ["React", "TypeScript", "GitHub Actions"],
     github: "https://github.com/mikeandersonwwt/yahtzee-game",
     demo: "https://mikeandersonwwt.github.io/yahtzee-game/",
@@ -109,12 +109,22 @@ const projects = [
   },
   {
     id: 5,
-    title: "The Odin Project Exercises",
+    title: "Uno Game",
+    description: "A web-based implementation of the classic UNO card game built with React. This project showcases frontend development skills, React hooks-based game logic, and automated CI/CD deployment using GitHub Actions.",
+    tech: ["React", "JavaScript", "GitHub Actions"],
+    github: "https://github.com/mikeandersonwwt/uno-game",
+    demo: "https://mikeandersonwwt.github.io/uno-game/",
+    demoButtonText: "Play",
+    image: "https://raw.githubusercontent.com/mikeandersonwwt/portfolio/main/public/uno-logo.svg",
+  },
+  {
+    id: 6,
+    title: "Odin Project Exercises",
     description: "Web development learning projects from The Odin Project curriculum. Hands-on exercises covering HTML, CSS, JavaScript, and modern web development practices.",
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/mikeandersonwwt/my-odin-project",
     demo: "https://mikeandersonwwt.github.io/my-odin-project/",
-    demoButtonText: "View Work",
+    demoButtonText: "Demo",
     image: "https://raw.githubusercontent.com/mikeandersonwwt/portfolio/main/public/odin-logo.png",
   },
 ];
@@ -123,7 +133,7 @@ export default function Projects() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="projects" className="py-20 bg-secondary/20">
+    <section id="projects" className="pt-20 pb-36 bg-secondary/20">
       <div 
         ref={ref}
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
@@ -146,7 +156,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {projects.slice(2).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

@@ -8,14 +8,10 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 
 ### View locally
 
-Run the development server:
+Clone the repo and run the development server:
 
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-### Previews
-
-![Preview](portfolio.png)

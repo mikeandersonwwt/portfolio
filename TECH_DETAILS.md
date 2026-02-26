@@ -1,12 +1,12 @@
 # Technical Details
 
 ## Overview
-A modern, responsive personal portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a polished user experience.
+A modern, responsive personal portfolio website built with Next.js 16, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a polished user experience.
 
 ## Tech Stack
 
 ### Core Framework
-- **Next.js 15** - React framework with App Router
+- **Next.js 16** - React framework with App Router
 - **React 19** - UI library
 - **TypeScript** - Type-safe development
 
@@ -27,7 +27,7 @@ A modern, responsive personal portfolio website built with Next.js 15, TypeScrip
 ## Project Structure
 
 ```
-personal-portfolio/
+portfolio/
 ├── app/
 │   ├── globals.css          # Global styles, CSS variables, animations
 │   ├── layout.tsx            # Root layout with metadata
@@ -165,12 +165,4 @@ npm run lint
 ```
 
 ## Deployment
-Optimized for deployment on Vercel, Netlify, or any static hosting platform that supports Next.js.
-
-## Future Enhancements
-- Blog section with MDX support
-- Project filtering by technology
-- Contact form backend integration
-- Analytics integration
-- SEO optimization with metadata
-- Performance monitoring
+Deployed to GitHub Pages via GitHub Actions using Next.js static export (`output: 'export'`). Also compatible with Vercel and Netlify.

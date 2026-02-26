@@ -23,17 +23,22 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Active section detection
+        // Active section detection
       const sections = ["hero", "about", "projects", "contact"];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      if (atBottom) {
+        setActiveSection("contact");
+      } else {
+        const current = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 150 && rect.bottom >= 150;
+          }
+          return false;
+        });
+        if (current) setActiveSection(current);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);

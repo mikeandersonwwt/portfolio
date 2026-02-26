@@ -8,7 +8,7 @@ const skills = [
   { name: "AI & Tools", icon: Bot, description: "Windsurf, ChatGPT, Copilot" },
   { name: "Automation Tools", icon: Workflow, description: "Playwright, Cypress, Postman" },
   { name: "API Tools", icon: Terminal, description: "Postman, Swagger, Mockoon" },
-  { name: "Mobile Testing", icon: Smartphone, description: "iOS, Android" },
+  { name: "Mobile Testing", icon: Smartphone, description: "iOS, Android, POS Systems" },
   { name: "Languages (novice)", icon: Code2, description: "JavaScript, TypeScript, Python" },
   { name: "Other", icon: Database, description: "Git, SQL, HTML/CSS" },
 ];
