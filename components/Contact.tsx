@@ -105,7 +105,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Resume</p>
-                    <a href="https://mikeanderson12.github.io/Resume/index.html" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-primary transition-colors cursor-pointer">
+                    <a href="/portfolio/resume.html" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-primary transition-colors cursor-pointer">
                       View Resume
                     </a>
                   </div>
