@@ -53,7 +53,7 @@ export default function Hero() {
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 active:scale-95 transition-all cursor-pointer">
-              <a href="/portfolio/resume.html" target="_blank" rel="noopener noreferrer" aria-label="Resume" className="cursor-pointer">
+              <a href="https://mikeanderson12.github.io/Resume/index.html" target="_blank" rel="noopener noreferrer" aria-label="Resume" className="cursor-pointer">
                 <FileText className="h-5 w-5 transition-transform hover:scale-110 hover:text-primary" />
               </a>
             </Button>

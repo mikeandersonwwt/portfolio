@@ -5,8 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const skills = [
-  { name: "AI & Tools", icon: Bot, description: "Windsurf, ChatGPT, Copilot" },
-  { name: "Automation Tools", icon: Workflow, description: "Playwright, Cypress, Postman" },
+  { name: "AI & Tools", icon: Bot, description: "Windsurf, MS Copilot, ChatGPT" },
+  { name: "Automation Tools", icon: Workflow, description: "Playwright, Cypress, BrowserStack" },
   { name: "API Tools", icon: Terminal, description: "Postman, Swagger, Mockoon" },
   { name: "Mobile Testing", icon: Smartphone, description: "iOS, Android, POS Systems" },
   { name: "Languages (novice)", icon: Code2, description: "JavaScript, TypeScript, Python" },
