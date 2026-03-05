@@ -16,6 +16,32 @@ type Project = {
   image: string;
 };
 
+type SmallProject = {
+  id: number;
+  title: string;
+  subtitle: string;
+  github: string;
+};
+
+function SmallProjectCard({ project }: { project: SmallProject }) {
+  return (
+    <Card className="flex flex-col transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/50 group h-full">
+      <CardHeader className="pb-2 pt-2 px-4 flex-grow">
+        <CardTitle className="text-xl leading-tight">{project.title}</CardTitle>
+        <CardDescription className="text-sm">{project.subtitle}</CardDescription>
+      </CardHeader>
+      <CardFooter className="pt-0 pb-3 px-4">
+        <Button variant="outline" size="sm" asChild className="w-full active:scale-95 transition-all hover:bg-primary/10 hover:text-primary hover:border-primary/50 group cursor-pointer">
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+            <Github className="h-3 w-3 mr-2 transition-all group-hover:rotate-12 group-hover:text-primary" />
+            View
+          </a>
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
 function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 hover:border-primary/50 group">
@@ -67,6 +93,21 @@ function ProjectCard({ project }: { project: Project }) {
     </Card>
   );
 }
+
+const smallProjects: SmallProject[] = [
+  {
+    id: 1,
+    title: "Windsurf Exercise 1",
+    subtitle: "Create a personal task manager",
+    github: "https://github.com/mikeandersonwwt/task-manager",
+  },
+  {
+    id: 2,
+    title: "Windsurf Exercise 2",
+    subtitle: "Create a complete REST API for a book library system",
+    github: "https://github.com/mikeandersonwwt/library-system",
+  },
+];
 
 const projects = [
   {
@@ -156,9 +197,15 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {projects.slice(2).map((project) => (
             <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 gap-6 max-w-xl mx-auto">
+          {smallProjects.map((project) => (
+            <SmallProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
